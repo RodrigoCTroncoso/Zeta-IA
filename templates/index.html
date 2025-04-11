@@ -2,8 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+<<<<<<< HEAD:index.html
   <title>Zeta IA </title>
   <link rel="stylesheet" href="style.css" />
+=======
+  <title>Zeta IA por Rodrigo C Troncoso</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+>>>>>>> 1b49ca14fb7039859b94252d219f9992e8af4b74:templates/index.html
 </head>
 <body>
   <div class="container">
@@ -42,7 +47,7 @@
       chatBox.scrollTop = chatBox.scrollHeight;
 
       try {
-        const res = await fetch('http://localhost:5000/chat', {
+        const res = await fetch('https://gas-cut-improvements-winning.trycloudflare.com/chat', {
 
 
           method: "POST",

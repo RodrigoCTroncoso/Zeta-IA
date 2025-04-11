@@ -16,7 +16,7 @@ def chat():
     prompt = f"Responda de forma simples, objetiva e sempre em português, seja sempre muito educado, sem exageros: {data['prompt']}"
     
     response = requests.post(
-        "https://d497-201-49-204-92.ngrok-free.app",
+        "http://localhost:11434/api/generate",
         headers={"Content-Type": "application/json"},
         json={
             "model": "llava:7b-v1.6",

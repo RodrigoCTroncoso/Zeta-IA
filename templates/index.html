@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zeta IA por Rodrigo C Troncoso</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="header">🤖 Zeta bot - IA</div>
+    <div id="chat" class="chat-box"></div>
+    <div class="input-area">
+      <input
+        type="text"
+        id="prompt"
+        placeholder="Digite sua mensagem e pressione Enter..."
+      />
+      <button onclick="enviar()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const promptInput = document.getElementById("prompt");
+    const chatBox = document.getElementById("chat");
+
+    promptInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") enviar();
+    });
+
+    async function enviar() {
+      const prompt = promptInput.value.trim();
+      if (!prompt) return;
+
+      // Adiciona mensagem do usuário
+      chatBox.innerHTML += `
+        <div class="message user">
+          <div class="bubble">👤 ${prompt}</div>
+        </div>
+      `;
+      promptInput.value = "";
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const res = await fetch('http://localhost:5000/chat', {
+
+
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: prompt + " (responda em português)" }),
+        });
+
+        const data = await res.json();
+
+        // Adiciona resposta da IA
+        chatBox.innerHTML += `
+          <div class="message bot">
+            <div class="bubble">🤖 ${data.response}</div>
+          </div>
+        `;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+      } catch (error) {
+        chatBox.innerHTML += `
+          <div class="message bot">
+            <div class="bubble error">Erro ao conectar com a IA.</div>
+          </div>
+        `;
+      }
+    }
+  </script>
+<footer class="rodape">
+    Developed by: Rodrigo C. Troncoso & Athena IA.
+  </footer>
+  </body>
+</html>

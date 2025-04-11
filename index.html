@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>Zeta IA por Rodrigo C Troncoso</title>
+<<<<<<< HEAD:templates/index.html
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+=======
+  <link rel="stylesheet" href="style.css" />
+>>>>>>> 33959fe45405567785d4bd391a87a56cb2dbfa54:index.html
 </head>
 <body>
   <div class="container">
-    <div class="header">🤖 Zeta IA</div>
+    <div class="header">🤖 Zeta bot - IA</div>
     <div id="chat" class="chat-box"></div>
     <div class="input-area">
       <input
@@ -42,7 +46,7 @@
       chatBox.scrollTop = chatBox.scrollHeight;
 
       try {
-        const res = await fetch('https://gas-cut-improvements-winning.trycloudflare.com/chat', {
+        const res = await fetch('http://localhost:5000/chat', {
 
 
           method: "POST",
@@ -70,7 +74,7 @@
     }
   </script>
 <footer class="rodape">
-    Developed by: Rodrigo C. Troncoso & Wallace FGs.
+    Developed by: Rodrigo C. Troncoso & Athena IA.
   </footer>
   </body>
 </html>
